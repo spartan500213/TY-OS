@@ -9,6 +9,6 @@ int main(int argc, char **argv) {
     }
     fd = open(argv[1], O_RDWR | O_CREAT);
     printf("fd = %d\n", fd);
-    printf("Hello\n");
+    printf("Hello from dell_ubuntu\n");
     return 0;
 }
