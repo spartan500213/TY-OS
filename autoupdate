@@ -1,0 +1,13 @@
+#! /usr/bin/bash
+
+echo "git fetch"
+git fetch
+echo "git pull"
+git pull
+echo "git status"
+git status
+echo "git add"
+git add *
+echo "git commit"
+read msg
+git commit -m "$msg"
