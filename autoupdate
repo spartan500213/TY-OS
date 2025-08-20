@@ -11,3 +11,5 @@ git add *
 echo "git commit"
 read -p "commit msg --> " msg
 git commit -m "$msg"
+echo "git push"
+git push
