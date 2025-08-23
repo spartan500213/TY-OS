@@ -1,0 +1,18 @@
+line 79
+>>  CFLAGS = -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -fno-omit-frame-pointer
+    default options to be used with gcc. whenever $(CFLAG) is encountered by make it is replacedwith the option from this line
+
+line 96
+>>  dd if=kernel of=xv6.img seek=1 conv=notrunc
+    this line copies all the bytes from input file 'kernel' to output file 'xv6.img' while taking into consideration that first 512 bytes of output file are skipped and copying starts from the 513th byte and the output file should not be truncated
+
+line 148
+>>  
+
+line 159
+>>  mkfs: mkfs.c fs.h
+    here mkfs is a target file whose prerequisite files are mkfs.c and fs.h. if these 2 files ahre available in the same directory as that of the Makefile then the commands on the next line 160 are executed
+
+line 224
+>>  qemu: fs.img xv6.img
+    here qemu is a target file whose prerequisite files are fs.img and xv6.img. if these 2 files are available in the same directory as that of the Makefile then the commands on the next line 225 are executed

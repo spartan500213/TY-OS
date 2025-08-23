@@ -1,0 +1,2 @@
+usertests:  1 min 9 sec 
+stressfs:   1 sec  
