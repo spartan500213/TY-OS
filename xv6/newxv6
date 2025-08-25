@@ -1,0 +1,5 @@
+#! /usr/bin/bash
+
+yes | rm -r ./xv6
+cp -r ./xv6-original ./xv6
+
