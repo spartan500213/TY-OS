@@ -1,0 +1,51 @@
+diff -rc linux-6.6.30-org/arch/x86/entry/syscalls/syscall_64.tbl linux-6.6.30-cust/arch/x86/entry/syscalls/syscall_64.tbl
+*** linux-6.6.30-org/arch/x86/entry/syscalls/syscall_64.tbl	2024-05-02 20:02:50.000000000 +0530
+--- linux-6.6.30-cust/arch/x86/entry/syscalls/syscall_64.tbl	2025-08-26 10:30:36.823237760 +0530
+***************
+*** 375,380 ****
+--- 375,383 ----
+  451	common	cachestat		sys_cachestat
+  452	common	fchmodat2		sys_fchmodat2
+  453	64	map_shadow_stack	sys_map_shadow_stack
++ #spar10 was here
++ 454	common	spar10pidances		sys_spar10pidances
++ #spar10 was gone
+  
+  #
+  # Due to a historical design error, certain syscalls are numbered differently
+diff -rc linux-6.6.30-org/include/linux/syscalls.h linux-6.6.30-cust/include/linux/syscalls.h
+*** linux-6.6.30-org/include/linux/syscalls.h	2024-05-02 20:02:50.000000000 +0530
+--- linux-6.6.30-cust/include/linux/syscalls.h	2025-08-26 10:33:53.418861074 +0530
+***************
+*** 1271,1274 ****
+--- 1271,1277 ----
+  		int __user *optlen);
+  int __sys_setsockopt(int fd, int level, int optname, char __user *optval,
+  		int optlen);
++ //spar10 was here
++ 	asmlinkage long sys_spar10pidances(pid_t pid);
++ //spar10 was gone
+  #endif
+diff -rc linux-6.6.30-org/kernel/Makefile linux-6.6.30-cust/kernel/Makefile
+*** linux-6.6.30-org/kernel/Makefile	2024-05-02 20:02:50.000000000 +0530
+--- linux-6.6.30-cust/kernel/Makefile	2025-08-26 10:35:38.738378302 +0530
+***************
+*** 10,16 ****
+  	    extable.o params.o \
+  	    kthread.o sys_ni.o nsproxy.o \
+  	    notifier.o ksysfs.o cred.o reboot.o \
+! 	    async.o range.o smpboot.o ucount.o regset.o ksyms_common.o
+  
+  obj-$(CONFIG_USERMODE_DRIVER) += usermode_driver.o
+  obj-$(CONFIG_MULTIUSER) += groups.o
+--- 10,18 ----
+  	    extable.o params.o \
+  	    kthread.o sys_ni.o nsproxy.o \
+  	    notifier.o ksysfs.o cred.o reboot.o \
+! 	    async.o range.o smpboot.o ucount.o regset.o ksyms_common.o \
+! 	    spar10pidances.o
+! #spar10 added the above line
+  
+  obj-$(CONFIG_USERMODE_DRIVER) += usermode_driver.o
+  obj-$(CONFIG_MULTIUSER) += groups.o
+Only in linux-6.6.30-cust/kernel: spar10pidances.c

@@ -1,0 +1,20 @@
+changes i made to the kernel
+1.edit the syscall_64.tbl file
+	arch/x86/entry/syscalls/syscall_64.tbl
+add a new line for your system call
+	454	common	spar10pidances		sys_spar10pidances
+
+2.add system call prototype to header file
+	include/linux/syscalls.h
+add a new line before the last #endif in the file
+	asmlinkage long sys_spar10pidances(pid_t pid)
+
+3.write your actual code in
+	kernel/spar10pidances.c
+
+4.add entry in the kernel Makefile
+	kernel/Makefile
+the entry should be added to the obj-y  
+	obj-y += spar10pidances.o
+
+5.make again
