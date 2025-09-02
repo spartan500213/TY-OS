@@ -1,0 +1,18 @@
+add to syscall.h
+    #define SYS_hello  22
+
+add to syscall.c
+    extern int sys_hello(void);
+    [SYS_hello]   sys_hello,
+
+add to sysproc.c
+    int sys_hello(void) {
+        cprintf(hello world\n);
+        return 0;
+    }
+
+add to user.h
+    int hello(void);
+
+add to usys.S
+    SYSCALL(hello);
