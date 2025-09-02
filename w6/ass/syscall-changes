@@ -1,0 +1,28 @@
+syscall.h
+    ...
+    #define SYS_lseek  22
+
+syscall.c
+    ...
+    extern int sys_lseek(void);
+    ...
+    [SYS_lseek]   sys_lseek,
+
+fcntl.h
+    ...
+    #define SEEK_SET 0
+    #define SEEK_CUR 1
+    #define SEEK_END 2
+
+usys.S
+    ...
+    SYSCALL(lseek)
+
+user.h
+    ...
+    int lseek(int, int, int);
+    ...
+
+sysfile.c
+    ...
+    //add sys_lseek(void) function definition
